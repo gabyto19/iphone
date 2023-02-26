@@ -19,32 +19,46 @@
     />
   </head>
   <body>
-    <div class="main" id="main" :class="{ flashbang: makeLight }">
-      <div
-        class="maintwo"
-        :class="{ maintwoBack: wallpaper }"
-        @dblclick="unlockScreen"
-      >
-        <nav>
-          <p class="network">NETWORK</p>
-          <div class="cholka"></div>
-          <div class="nav-icons">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAe0lEQVR4nOXUsQmAMBCF4VTiAILoBtYWVuIAVqbOWGLhMFnDcX4RUlyCIF4REA8eBJJ8xZGcMS8LKAAr0hoFUgEecMB2QVpkD2uXDwFqYBUZNEhHXMuHEKAHDpFZg4zJJZsHAcrr6YpMGuTu0M8QH/3i0Ew5H5p0Xjztn9RPkOfpuq1uAAAAAElFTkSuQmCC"
-            />
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB90lEQVR4nO3VS0gVcRQG8KsiGmakbkJICjeVrQNb3lyJ1SIqqEVQyFUKXfUgglpW1KK3UC4iEIoi6AFBi+i1ElvULnLRgx5QkG5q94t/nIFhQE257TwwDOf8v/N9M989Z26ptBjVDDRhI/bgEA7jYOSp3rRQ4lYcwDP8wjhu4BRO4nTk43H+FPvR8i/kLTiDKdzGLrTN0dOG3biDn/EAy2cCb8dX3MS6wtlabMVA2DUQ+ZoCrgu38AXb8gd1uIhv2JSrd+IcJvEO9zASdo1EPhlXwnXmenuC73ziT4UxvEJ7AFZgFJ9xLD3dHHZ1BS7hr6X+qLcH71hedQPKeI/jaC4MQh8qYVcl8tYcphknor8cfIm3JwOkhh/4gO5c4xY8iUF4hMth15XIp+J8c66nGx+Dr6/42r05y1bjBV5jBxpnsKoRO/EGz7EqZ1XvbB6XY8qOojY3HN0YDLsGI6+L89rAp77ybL9hJtIfr9sR5EP4hImwKZuuiagPBa4j+vrnFAmhYbwNC+4X9yaLVMeDwCX8cGk+gSNx1US+EvvCrr0pj3pNhp2XQEGsARcwjbs4G/fpWLaGBZPnRNJO/C4uJdZHvVINkWTHJbzE0qgtif0YzeysltBVPMYyPMT1bMSrFjGm6Qv9Pe5/d6Tqgfr4d6z/LwKLkeIP10YjABOEb3UAAAAASUVORK5CYII="
-            />
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArUlEQVR4nO3SMQ4BQRiG4S304gbOQEi0Sg4gElHq3ELCFeg1Cq1Go1AoNTqcQClRSB7NbrORlcV0+yZfN9+88/+ZKCooCA5KGGCK2ReZoPNJsvAfxlmSW+rwGvMc2cS9XZbknpI0cq67G/euGKEfUpJwCSGpYYVtMEkCmiEnKaOOYUhJN9UPKnng/PYrv5G0UcmRXtw7ZL3k6D8ssyQtnH64/Ik9qnnWXFAQ/cQLpLKjtMRh0WkAAAAASUVORK5CYII="
-            />
-          </div>
-        </nav>
-        <div class="ekrani">
-          <IphoneCalculator v-if="false"></IphoneCalculator>
-          <lockScreen v-if="butLockScreen" @flashLight="bright"></lockScreen>
-          <menuPage v-if="true"></menuPage>
+    <div
+      class="maintwo"
+      :class="{ maintwoBack: wallpaper, flashbang: makeLight }"
+      @dblclick="unlockScreen"
+    >
+      <nav>
+        <p class="network">NETWORK</p>
+        <div class="cholka"></div>
+        <div class="nav-icons">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAe0lEQVR4nOXUsQmAMBCF4VTiAILoBtYWVuIAVqbOWGLhMFnDcX4RUlyCIF4REA8eBJJ8xZGcMS8LKAAr0hoFUgEecMB2QVpkD2uXDwFqYBUZNEhHXMuHEKAHDpFZg4zJJZsHAcrr6YpMGuTu0M8QH/3i0Ew5H5p0Xjztn9RPkOfpuq1uAAAAAElFTkSuQmCC"
+          />
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB90lEQVR4nO3VS0gVcRQG8KsiGmakbkJICjeVrQNb3lyJ1SIqqEVQyFUKXfUgglpW1KK3UC4iEIoi6AFBi+i1ElvULnLRgx5QkG5q94t/nIFhQE257TwwDOf8v/N9M989Z26ptBjVDDRhI/bgEA7jYOSp3rRQ4lYcwDP8wjhu4BRO4nTk43H+FPvR8i/kLTiDKdzGLrTN0dOG3biDn/EAy2cCb8dX3MS6wtlabMVA2DUQ+ZoCrgu38AXb8gd1uIhv2JSrd+IcJvEO9zASdo1EPhlXwnXmenuC73ziT4UxvEJ7AFZgFJ9xLD3dHHZ1BS7hr6X+qLcH71hedQPKeI/jaC4MQh8qYVcl8tYcphknor8cfIm3JwOkhh/4gO5c4xY8iUF4hMth15XIp+J8c66nGx+Dr6/42r05y1bjBV5jBxpnsKoRO/EGz7EqZ1XvbB6XY8qOojY3HN0YDLsGI6+L89rAp77ybL9hJtIfr9sR5EP4hImwKZuuiagPBa4j+vrnFAmhYbwNC+4X9yaLVMeDwCX8cGk+gSNx1US+EvvCrr0pj3pNhp2XQEGsARcwjbs4G/fpWLaGBZPnRNJO/C4uJdZHvVINkWTHJbzE0qgtif0YzeysltBVPMYyPMT1bMSrFjGm6Qv9Pe5/d6Tqgfr4d6z/LwKLkeIP10YjABOEb3UAAAAASUVORK5CYII="
+          />
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArUlEQVR4nO3SMQ4BQRiG4S304gbOQEi0Sg4gElHq3ELCFeg1Cq1Go1AoNTqcQClRSB7NbrORlcV0+yZfN9+88/+ZKCooCA5KGGCK2ReZoPNJsvAfxlmSW+rwGvMc2cS9XZbknpI0cq67G/euGKEfUpJwCSGpYYVtMEkCmiEnKaOOYUhJN9UPKnng/PYrv5G0UcmRXtw7ZL3k6D8ssyQtnH64/Ik9qnnWXFAQ/cQLpLKjtMRh0WkAAAAASUVORK5CYII="
+          />
         </div>
+      </nav>
+      <div class="ekrani">
+        <IphoneCalculator v-if="calculatorComp"></IphoneCalculator>
+        <lockScreen
+          @toggle-camera="chartva"
+          v-if="butLockScreen"
+          @flashLight="bright"
+        ></lockScreen>
+        <menuPage
+          @toggle-msg="toggleMessage"
+          @toggle-variable="handleToggleVariable"
+          @toggle-calc="toggleCalculator"
+          @toggle-camera="chartva"
+          @toggle-facetime="toggleFacetime"
+          @toggle-clock="toggleClock"
+          v-if="menuComp"
+        ></menuPage>
+        <callPage v-if="callComp"></callPage>
+        <messagePage v-if="messageComp"></messagePage>
+        <facetimePage v-if="facetimeComp"></facetimePage>
+        <clockPage v-if="clockComp"></clockPage>
       </div>
     </div>
   </body>
@@ -54,25 +68,101 @@
 import IphoneCalculator from "./components/IphoneCalculator.vue";
 import lockScreen from "./components/lockScreen.vue";
 import menuPage from "./components/menuPage.vue";
-
+import callPage from "./components/callPage.vue";
+import messagePage from "./components/childComponents/menuComponents/messagePage.vue";
+import facetimePage from "./components/childComponents/menuComponents/facetimePage.vue";
+import clockPage from "./components/childComponents/menuComponents/clockPage.vue";
 export default {
   name: "App",
   components: {
     IphoneCalculator,
     lockScreen,
     menuPage,
+    callPage,
+    messagePage,
+    facetimePage,
+    clockPage,
   },
   data() {
     return {
-      butLockScreen: false,
+      butLockScreen: true,
       makeLight: false,
       wallpaper: true,
+      calculatorComp: false,
+      menuComp: false,
+      callComp: false,
+      messageComp: false,
+      facetimeComp: false,
+      clockComp:false,
     };
   },
   methods: {
+    chartva() {
+      this.wallpaper = false;
+    },
+    toggleClock(){
+      this.butLockScreen = false;
+      this.makeLight = false;
+      this.wallpaper = false;
+      this.calculatorComp = false;
+      this.menuComp = false;
+      this.callComp = false;
+      this.messageComp = false;
+      this.facetimeComp = false;
+      this.clockComp = true;
+    },
+    toggleMessage() {
+      this.butLockScreen = false;
+      this.makeLight = false;
+      this.wallpaper = false;
+      this.calculatorComp = false;
+      this.menuComp = false;
+      this.callComp = false;
+      this.messageComp = true;
+      this.facetimeComp = false;
+      this.clockComp = false;
+    },
+    toggleCalculator() {
+      this.butLockScreen = false;
+      this.makeLight = false;
+      this.wallpaper = false;
+      this.calculatorComp = true;
+      this.menuComp = false;
+      this.callComp = false;
+      this.messageComp = false;
+      this.facetimeComp = false;
+      this.clockComp = false;
+
+    },
+    handleToggleVariable() {
+      this.butLockScreen = false;
+      this.makeLight = false;
+      this.wallpaper = false;
+      this.calculatorComp = false;
+      this.menuComp = false;
+      this.callComp = true;
+      this.messageComp = false;
+      this.facetimeComp = false;
+      this.clockComp = false;
+
+    },
+    toggleFacetime() {
+      this.butLockScreen = false;
+      this.makeLight = false;
+      this.wallpaper = false;
+      this.calculatorComp = false;
+      this.menuComp = false;
+      this.callComp = false;
+      this.messageComp = false;
+      this.facetimeComp = true;
+      this.clockComp = false;
+
+    },
+     
     unlockScreen() {
       if (this.butLockScreen) {
-        this.butLockScreen = !this.butLockScreen;
+        this.butLockScreen = false;
+        this.menuComp = true;
       }
     },
     bright() {
@@ -115,15 +205,6 @@ nav {
   width: 68px;
 }
 
-.main {
-  margin: auto;
-  height: 620px;
-  width: 330px;
-  background: #262626;
-  position: relative;
-  top: 100px;
-  border-radius: 2em;
-}
 .maintwo {
   margin: auto;
   height: 600px;
@@ -133,6 +214,13 @@ nav {
   border-radius: 1.5em;
   background-size: cover;
   background-color: black;
+  border: #262626;
+  border-style: solid;
+  border-width: 7px;
+  position: relative;
+  top: 100px;
+  margin: auto;
+  z-index: 0;
 }
 .cholka {
   width: 40%;
@@ -141,7 +229,6 @@ nav {
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
   align-items: center !important;
+  z-index: 50;
 }
-
-
 </style>

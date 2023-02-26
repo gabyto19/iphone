@@ -106,7 +106,6 @@ export default {
             }
             this.saver = parseInt(this.clickedNumber);
             this.switcher = false;
-            // debugger
           }
         }
       }
@@ -163,7 +162,6 @@ export default {
         if (this.two >= 2) {
           if (this.buttons[idx] != "=") {
             this.clickedNumber = this.buttons[idx];
-            debugger;
           }
           this.switcher = true;
           this.saver = 0;
@@ -353,6 +351,6 @@ input[type="number"] {
 
 .three {
   background-color: #a5a5a5;
-  color: black;
+  color: black !important;
 }
 </style>

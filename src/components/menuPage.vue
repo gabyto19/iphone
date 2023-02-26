@@ -1,101 +1,126 @@
 <template>
-  <div></div>
-  <div class="upperSide">
-    <div class="weather">
-      <div class="wePosition" :class="{ loading: this.button }">
-        <div>
-          <p style="margin: 0px 0px 0px 6px; height: 18px">{{ city }}</p>
-          <h2 :class="{ loading: this.button }">{{ temperature }}</h2>
+  <div v-if="browser">
+    <div class="upperSide">
+      <div class="weather">
+        <div class="wePosition" :class="{ loading: this.button }">
+          <div>
+            <p style="margin: 0px 0px 0px 6px; height: 18px">{{ city }}</p>
+            <h2 :class="{ loading: this.button }">{{ temperature }}</h2>
+          </div>
+          <div class="dabla">
+            <p style="padding: 0 0 0 6px; margin: 0px">{{ bu }}</p>
+            <p>{{ high }} {{ low }}</p>
+          </div>
         </div>
-        <div class="dabla">
-          <p style="padding: 0 0 0 6px; margin: 0px">{{ bu }}</p>
-          <p>{{ high }} {{ low }}</p>
-        </div>
       </div>
-    </div>
-    <div class="battery">
-      <div class="grid-item">
-        <img
-          class="phone-icon-class"
-          src="../assets/phone-icon.png"
-          alt="Phone"
-        />
-        <svg style="top: 4px">
-          <circle cx="27" cy="25" r="25" />
-          <circle cx="-30" cy="32" r="25" style="stroke-dashoffset: 50px" />
-        </svg>
-      </div>
-      <div class="grid-item">
-        <img
-          class="watch-icon-class"
-          src="../assets/watch-icon.png"
-          alt="watch"
-        />
-        <svg style="top: 4px">
-          <circle cx="27" cy="25" r="25" />
-          <circle cx="-30" cy="32" r="25" style="stroke-dashoffset: 10px" />
-        </svg>
-      </div>
-      <div class="grid-item">
-        <img
-          class="airpods-icon-class"
-          src="../assets/airpods-icon.png"
-          alt="airpods"
-        />
-        <svg>
-          <circle cx="27" cy="25" r="25" />
-          <circle cx="-30" cy="32" r="25" style="stroke-dashoffset: 100px" />
-        </svg>
-      </div>
-      <div class="grid-item">
-        <img
-          class="airpodsCase-icon-class"
-          src="../assets/airpodCase-icon.png"
-          alt="airpodscase"
-        />
-        <svg>
-          <circle cx="27" cy="25" r="25" />
-          <circle
-            cx="-30"
-            cy="32"
-            r="25"
-            style="stroke-dashoffset: 125px; stroke: red"
+      <div class="battery">
+        <div class="grid-item">
+          <img
+            class="phone-icon-class"
+            src="../assets/phone-icon.png"
+            alt="Phone"
           />
-        </svg>
+          <svg style="top: 4px">
+            <circle cx="27" cy="25" r="25" />
+            <circle cx="-30" cy="32" r="25" style="stroke-dashoffset: 50px" />
+          </svg>
+        </div>
+        <div class="grid-item">
+          <img
+            class="watch-icon-class"
+            src="../assets/watch-icon.png"
+            alt="watch"
+          />
+          <svg style="top: 4px">
+            <circle cx="27" cy="25" r="25" />
+            <circle cx="-30" cy="32" r="25" style="stroke-dashoffset: 10px" />
+          </svg>
+        </div>
+        <div class="grid-item">
+          <img
+            class="airpods-icon-class"
+            src="../assets/airpods-icon.png"
+            alt="airpods"
+          />
+          <svg>
+            <circle cx="27" cy="25" r="25" />
+            <circle cx="-30" cy="32" r="25" style="stroke-dashoffset: 100px" />
+          </svg>
+        </div>
+        <div class="grid-item">
+          <img
+            class="airpodsCase-icon-class"
+            src="../assets/airpodCase-icon.png"
+            alt="airpodscase"
+          />
+          <svg>
+            <circle cx="27" cy="25" r="25" />
+            <circle
+              cx="-30"
+              cy="32"
+              r="25"
+              style="stroke-dashoffset: 125px; stroke: red"
+            />
+          </svg>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="middleSide">
-    <div v-for="(button, index) in icons" :key="button.id">
-      <button
-        :class="{
-          faceTimeClass: faceTime(index),
-          calendar: calendar(index),
-          mailClass: mail(index),
-          notesClass: notes(index),
-          photosClass: photos(index),
-          tvClass: tv(index),
-          podcastClass: podcast(index),
-          remindersClass: reminders(index),
-          clockClass: clock(index),
-          healthClass: health(index),
-          calculatorClass: calculator(index),
-          walletClass: wallet(index),
-          appStoreClass: appStore(index),
-          mapsClass: maps(index),
-          settingsClass: settings(index),
-          googleMapsClass: googleMaps(index),
-        }"
-        class="homeIcons"
-      ></button>
-      <label>{{ button }}</label>
+    <div class="middleSide">
+      <div
+        v-for="(button, index) in icons"
+        :key="button.id"
+        @click="toggleCalculator(button)"
+      >
+        <button
+          :class="{
+            faceTimeClass: faceTime(index),
+            calendar: calendar(index),
+            mailClass: mail(index),
+            notesClass: notes(index),
+            photosClass: photos(index),
+            tvClass: tv(index),
+            podcastClass: podcast(index),
+            remindersClass: reminders(index),
+            clockClass: clock(index),
+            healthClass: health(index),
+            calculatorClass: calculator(index),
+            walletClass: wallet(index),
+            appStoreClass: appStore(index),
+            mapsClass: maps(index),
+            settingsClass: settings(index),
+            googleMapsClass: googleMaps(index),
+          }"
+          class="homeIcons"
+        ></button>
+        <label>{{ button }}</label>
+      </div>
     </div>
+    <div class="bottom-side">
+      <button @click="toggleVariable" class="callClass homeIcons"></button>
+      <button @click="toggleMessage" class="messagesClass homeIcons"></button>
+      <button @click="openBrowser()" class="safariClass homeIcons"></button>
+      <button @click="startCamera(),openCamera()" class="cameraClass homeIcons"></button>
+    </div>
+    <video ref="videoElement" autoplay></video>
   </div>
-  <div class="bottom-side">
-    <button class="callClass homeIcons"></button>
-    <button class="messagesClass homeIcons"></button>
-    <button class="safariClass homeIcons"></button>
-    <button class="cameraClass homeIcons"></button>
+
+  <div class="saiti" v-else-if="browserOn">
+    <iframe
+      src="https://www.google.com/"
+      frameborder="0"
+      allowfullscreen=""
+      webkitallowfullscreen="true"
+      mozallowfullscreen="true"
+      oallowfullscreen="true"
+      msallowfullscreen="true"
+    ></iframe>
+  </div>
+  <div>
+    <video
+      style="height: 50px; margin-top: 40%; height: 100%; width: 100%"
+      ref="videoElement"
+      autoplay
+    ></video>
   </div>
 </template>
 
@@ -128,6 +153,9 @@ export default {
       bu: "Loading...  ",
       high: "Loading...  ",
       low: "Loading...  ",
+      browser: true,
+      browserOn: false,
+      camera: false,
     };
   },
 
@@ -144,6 +172,46 @@ export default {
   },
 
   methods: {
+    startCamera() {
+      this.browser = false;
+      this.browserOn = false;
+      this.camera = true;
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          this.$refs.videoElement.srcObject = stream;
+          this.$refs.videoElement.play();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    openCamera(){
+      this.$emit('toggle-camera');
+    },
+    openBrowser() {
+      this.browser = false;
+      this.browserOn = true;
+    },
+
+    toggleMessage() {
+      this.$emit("toggle-msg");
+    },
+    toggleCalculator(button) {
+      if (button == "Calculator") {
+        this.$emit("toggle-calc");
+      }
+      if (button == "FaceTime")
+      {
+        this.$emit("toggle-facetime");
+      }
+      if(button == "Clock"){
+        this.$emit("toggle-clock");
+      }
+    },
+    toggleVariable() {
+      this.$emit("toggle-variable");
+    },
     async getWeather() {
       const API_KEY = "b5a6f2e6379ec2b7e1e5eeabe4e3383b";
       const weather = await axios.get(
@@ -173,16 +241,6 @@ export default {
       } else {
         console.error("Geolocation is not supported by this browser.");
       }
-    },
-
-    async getCityByLatLng(lat, lng) {
-      const res = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=YOUR_API_KEY`
-      );
-      const city = res.data.results[0].address_components.find((component) =>
-        component.types.includes("locality")
-      ).long_name;
-      return city;
     },
 
     faceTime(id) {
@@ -270,37 +328,46 @@ export default {
 </script>
 
 <style scoped>
-
-.callClass{
-  background-image: url('../assets/call.png');
+.saiti {
+  position: relative;
+  width: 100%;
+  height: 587px;
+  top: -36px;
+}
+.saiti iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+.callClass {
+  background-image: url("../assets/call.png");
   background-size: cover;
 }
 
-.messagesClass{
-  background-image: url('../assets/messages.png');
+.messagesClass {
+  background-image: url("../assets/messages.png");
   background-size: cover;
 }
 
-.safariClass{
-  background-image: url('../assets/safari.png');
+.safariClass {
+  background-image: url("../assets/safari.png");
   background-size: cover;
 }
-.cameraClass{
-  background-image: url('../assets/camera.png ');
+.cameraClass {
+  background-image: url("../assets/camera.png ");
   background-size: cover;
 }
 .bottom-side {
   width: 94%;
-    position: relative;
-    top: 34px;
-    height: 71px;
-    border-radius: 1em;
-    background-color: #222222c4;
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
+  position: relative;
+  top: 23px;
+  height: 71px;
+  border-radius: 1em;
+  background-color: #222222c4;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .airpodsCase-icon-class {
@@ -479,8 +546,8 @@ svg circle:nth-child(2) {
   display: grid;
   gap: 0px 18px;
   position: relative;
-  top: 42px;
-  left: 20px;
+  top: 33px;
+  left: 12px;
   text-align: center;
 }
 .middleSide label {
@@ -503,5 +570,11 @@ svg circle:nth-child(2) {
 
 .loading {
   font-size: xx-small !important;
+}
+</style>
+
+<style>
+.maintwo {
+  background-color: black !important;
 }
 </style>
