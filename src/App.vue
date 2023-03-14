@@ -61,6 +61,30 @@
         <clockPage v-if="clockComp"></clockPage>
       </div>
     </div>
+    <footer>
+      <p>Beta Version</p>
+      <br />
+      <p>Working functions:</p>
+      <ol>
+        <li>FlashLight</li>
+        <br />
+        <li>Camera</li>
+        <br />
+        <li>Time(Clock)</li>
+        <br />
+        <li>Weather</li>
+        <br />
+        <li>FaceTime</li>
+        <br />
+        <li>Calculator</li>
+        <br />
+        <li>Call</li>
+        <br />
+        <li>Messages</li>
+        <br />
+        <li>Safari</li>
+      </ol>
+    </footer>
   </body>
 </template>
 
@@ -93,14 +117,14 @@ export default {
       callComp: false,
       messageComp: false,
       facetimeComp: false,
-      clockComp:false,
+      clockComp: false,
     };
   },
   methods: {
     chartva() {
       this.wallpaper = false;
     },
-    toggleClock(){
+    toggleClock() {
       this.butLockScreen = false;
       this.makeLight = false;
       this.wallpaper = false;
@@ -132,7 +156,6 @@ export default {
       this.messageComp = false;
       this.facetimeComp = false;
       this.clockComp = false;
-
     },
     handleToggleVariable() {
       this.butLockScreen = false;
@@ -144,7 +167,6 @@ export default {
       this.messageComp = false;
       this.facetimeComp = false;
       this.clockComp = false;
-
     },
     toggleFacetime() {
       this.butLockScreen = false;
@@ -156,9 +178,8 @@ export default {
       this.messageComp = false;
       this.facetimeComp = true;
       this.clockComp = false;
-
     },
-     
+
     unlockScreen() {
       if (this.butLockScreen) {
         this.butLockScreen = false;
@@ -230,5 +251,24 @@ nav {
   border-bottom-right-radius: 1em;
   align-items: center !important;
   z-index: 50;
+}
+
+footer {
+  position: relative;
+  top: 100px;
+  width: 100%;
+}
+
+footer p,
+li {
+  color: black !important;
+}
+footer li {
+  width: 100px;
+  margin-left: 30px;
+}
+
+footer ol {
+  display: flex;
 }
 </style>
